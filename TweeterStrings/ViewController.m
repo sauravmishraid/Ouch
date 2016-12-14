@@ -60,7 +60,8 @@
 -(void)fetchTweets
 {
     if(self.bearerToken == nil) return;
-    NSURL *URL = [NSURL URLWithString:@"https://api.twitter.com/1.1/search/tweets.json?q=%23ios&count=25"];
+   // https://twitter.com/search?f=tweets&q=%22%23blackrock%22%20filter%3Averified%20%2C%20filter%3Asafe&src=typd
+    NSURL *URL = [NSURL URLWithString:@"https://api.twitter.com/1.1/search/tweets.json?q=%23ios%20filter:verified&filter:retweet&filter:safe%20&count=25"];
     NSMutableURLRequest *urlRequest = [NSMutableURLRequest requestWithURL:URL cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:30.0];
     [urlRequest setValue:[NSString stringWithFormat:@"Bearer %@", self.bearerToken] forHTTPHeaderField:@"Authorization"];
     [urlRequest setHTTPMethod:@"GET"];
