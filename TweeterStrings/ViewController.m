@@ -61,7 +61,8 @@
 {
     if(self.bearerToken == nil) return;
    // https://twitter.com/search?f=tweets&q=%22%23blackrock%22%20filter%3Averified%20%2C%20filter%3Asafe&src=typd
-    NSURL *URL = [NSURL URLWithString:@"https://api.twitter.com/1.1/search/tweets.json?q=%23ios%20filter:verified&filter:retweet&filter:safe%20&count=25"];
+    //https://twitter.com/search?f=tweets&q="%23blackrock"%20-filter%3Aretweet%20filter%3Averified&&result_type=recent
+    NSURL *URL = [NSURL URLWithString:@"https://api.twitter.com/1.1/search/tweets.json?q=%23blackrock%20filter:verified&count=25&result_type=recent-filter:retweets"];
     NSMutableURLRequest *urlRequest = [NSMutableURLRequest requestWithURL:URL cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:30.0];
     [urlRequest setValue:[NSString stringWithFormat:@"Bearer %@", self.bearerToken] forHTTPHeaderField:@"Authorization"];
     [urlRequest setHTTPMethod:@"GET"];
@@ -95,6 +96,7 @@
         NSDictionary *responseJSON=[NSDictionary new];
         NSData *trueData= data;
         responseJSON = [NSJSONSerialization JSONObjectWithData:trueData options:NSJSONReadingAllowFragments error:nil];
+       NSString *myJSON =  [NSString new];
        NSLog(@"Hi");
    }];
     [downloadTask resume];
