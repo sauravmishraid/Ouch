@@ -27,7 +27,7 @@
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     self.twitter = [STTwitterAPI twitterAPIWithOAuthConsumerKey:@"VReHqMvcPnOfZn63w1eUMZcpl" consumerSecret:@"YdTmePSWBEX7iVrp7yqvUry7Zm9H3ZhzxZ19cNGCYnZGNg8jtJ"];
     self.tweets = [[Tweets alloc] init];
-    [self.twitter getSearchTweetsWithQuery:@"%23Blackrock" geocode:nil lang:nil locale:nil resultType:@"recent" count:@"100" until:nil sinceID:nil maxID:nil includeEntities:nil callback:nil useExtendedTweetMode:nil successBlock:^(NSDictionary *searchMetadata, NSArray *statuses) {
+    [self.twitter getSearchTweetsWithQuery:@"@blackrock" geocode:nil lang:nil locale:nil resultType:@"recent" count:@"200" until:nil sinceID:nil maxID:nil includeEntities:nil callback:nil useExtendedTweetMode:nil successBlock:^(NSDictionary *searchMetadata, NSArray *statuses) {
         self.arrayOfSortedTweets=[self.tweets evaluateStatus:statuses];
         dispatch_async(dispatch_get_main_queue(), ^{
             self.tableView.delegate= self;
